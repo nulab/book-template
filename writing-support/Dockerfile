@@ -16,9 +16,7 @@ RUN apt-get update && apt-get install -y gnuplot && \
   rm -rf /var/lib/apt/lists/*
 
 # lang
-# workarround : https://bugs.launchpad.net/ubuntu-jp-improvement/+bug/1508796
-# RUN apt-get update && apt-get install -y language-pack-ja nkf && \
-RUN apt-get update && apt-get install -y language-pack-ja=1:14.04+20140410 nkf && \
+RUN apt-get update && apt-get install -y language-pack-ja nkf && \
   update-locale LANG=ja_JP.UTF-8 && \
   rm -rf /var/lib/apt/lists/*
 ENV LANG ja_JP.UTF-8
