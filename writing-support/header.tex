@@ -1,0 +1,45 @@
+% paragraph like section ( http://tex.stackexchange.com/a/60212 )
+\usepackage{titlesec}
+\setcounter{secnumdepth}{4}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% custom figure number ( http://tex.pc-physics.com/picture.html )
+\makeatletter
+\def\thefigure{\arabic{section}-\arabic{figure}}
+\@addtoreset{figure}{section}
+\makeatother
+
+% custom table number ( http://tex.stackexchange.com/a/50293 )
+\makeatletter
+\@addtoreset{table}{section}
+\makeatother
+\renewcommand\thetable{\arabic{section}-\arabic{table}}
+
+% custom section title ( http://tex.stackexchange.com/a/68487 )
+\renewcommand*{\thesection}{第\arabic{section}章}
+\renewcommand*{\thesubsection}{\arabic{section}.\arabic{subsection}}
+
+% custom section title style in table of contents ( http://oku.edu.mie-u.ac.jp/tex/mod/forum/discuss.php?d=235 )
+% copy from "/usr/share/texlive/texmf-dist/tex/luatex/luatexja/ltjarticle.cls"
+\makeatletter
+\renewcommand*{\l@section}[2]{%
+  \ifnum \c@tocdepth >\z@
+    \addpenalty{\@secpenalty}%
+    \addvspace{1.0em \@plus\p@}%
+    \begingroup
+      \parindent\z@ \rightskip\@pnumwidth \parfillskip-\rightskip
+      \leavevmode\bfseries
+      \setlength\@lnumwidth{4.0em}%
+      \advance\leftskip\@lnumwidth \hskip-\leftskip
+      #1\nobreak\hfil\nobreak\hbox to\@pnumwidth{\hss#2}\par
+    \endgroup
+  \fi}
+\makeatother
+
+% enable column block ( http://oku.edu.mie-u.ac.jp/tex/mod/forum/discuss.php?d=1454 )
+\usepackage{ascmac}
+\newdimen\tbaselineshift
